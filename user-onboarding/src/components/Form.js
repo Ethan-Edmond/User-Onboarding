@@ -1,6 +1,6 @@
 import React from "react";
 
-function Form({values, update, submit}){
+function Form({values, errors, disabled, update, submit}){
 
   const onChange = (event) => {
     const valueToUse = (event.target.type === "checkbox") ? event.target.checked : event.target.value;
@@ -14,19 +14,35 @@ function Form({values, update, submit}){
 
   return (
     <form onSubmit={onSubmit}>
-      <label>UserName
+      <label>{
+        errors.username.length ?
+          (<span style={{color: "red"}}>{errors.username}</span>) :
+          "Username"
+      }
         <input onChange={onChange} value={values.username} type="text" name="username"/>
       </label>
-      <label>Email
-      <input onChange={onChange} value={values.email} type="email" name="email"/>
+      <label>{
+        errors.email.length ?
+          (<span style={{color: "red"}}>{errors.email}</span>) :
+          "Email"
+      }
+      <input onChange={onChange} value={values.email} type="text" name="email"/>
       </label>
-      <label>Password
+      <label>{
+        errors.password.length ?
+          (<span style={{color: "red"}}>{errors.password}</span>) :
+          "Password"
+      }
       <input onChange={onChange} value={values.password} type="text" name="password"/>
       </label>
-      <label>Do you agree to the terms?
+      <label>{
+        errors.terms.length ?
+          (<span style={{color: "red"}}>{errors.terms}</span>) :
+          "Do you agree to the terms?"
+      }
       <input onChange={onChange} checked={values.terms} type="checkbox" name="terms"/>
       </label>
-      <button>Submit</button>
+      <button disabled={disabled}>Submit</button>
     </form>
   );
 }

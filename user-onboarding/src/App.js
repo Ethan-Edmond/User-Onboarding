@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import axios from "axios";
+import styled from "styled-components";
 import './App.css';
 import Form from "./components/Form";
 import schema from "./validation";
@@ -18,6 +19,11 @@ const initFormErrors = {
   password: "",
   terms: ""
 };
+
+const AppContainer = styled.div`
+  background: #f9f9ff;
+  overflow: auto;
+`;
 
 function App() {
   const [formValues, setFormValues] = useState(initFormValues);
@@ -51,7 +57,7 @@ function App() {
   }, [formValues]);
 
   return (
-    <div className="App">
+    <AppContainer>
       <Form
         values={formValues}
         update={formUpdate}
@@ -69,7 +75,7 @@ function App() {
           </div>
         );
       })}
-    </div>
+    </AppContainer>
   );
 }
 

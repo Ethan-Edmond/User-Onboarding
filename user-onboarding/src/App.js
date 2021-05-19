@@ -24,10 +24,13 @@ const AppContainer = styled.div`
   overflow: auto;
   display: flex;
   align-items: flex-start;
+  @media (max-width: 600px){
+    flex-direction: column;
+  }
 `;
 
 const UserContainer = styled.div`
-  width: 70%;
+  width: 100%;
   margin: 0;
   padding: 0;
 `;
@@ -39,6 +42,10 @@ const User = styled.div`
   overflow: auto;
   border-radius: 10px;
   border: 3px outset #f1f1ff;
+  @media (max-width: 600px){
+    width: 95%;
+    margin: 2.5% 2.5% 0 2.5%;
+  }
 `;
 
 const UserH = styled.h3`

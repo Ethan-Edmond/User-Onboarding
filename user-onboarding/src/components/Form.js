@@ -9,6 +9,11 @@ const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   border: 3px outset #f1f1ff;
+  @media (max-width: 600px){
+    width: 95%;
+    margin: 2.5%;
+    border-radius: 10px;
+  }
 `;
 
 const FormField = styled.div`

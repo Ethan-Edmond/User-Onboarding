@@ -21,8 +21,35 @@ const initFormErrors = {
 };
 
 const AppContainer = styled.div`
-  background: #f9f9ff;
   overflow: auto;
+  display: flex;
+  align-items: flex-start;
+`;
+
+const UserContainer = styled.div`
+  width: 70%;
+  margin: 0;
+  padding: 0;
+`;
+
+const User = styled.div`
+  background: white;
+  margin: 10px 10px 10px 0;
+  padding: 10px;
+  overflow: auto;
+  border-radius: 10px;
+  border: 3px outset #f1f1ff;
+`;
+
+const UserH = styled.h3`
+  margin: 0;
+  font-weight: 400;
+`;
+
+const UserText = styled.p`
+  margin: 0;
+  font-weight: 500;
+  color: #656570;
 `;
 
 function App() {
@@ -47,8 +74,7 @@ function App() {
     })
       .then(res => setUsers([res.data, ...users]))
       .catch(err => console.log("ERR", err));
-    // post to api
-    // add return to users
+    setFormValues(initFormValues);
   };
 
   useEffect(() => {
@@ -65,16 +91,18 @@ function App() {
         errors={formErrors}
         disabled={disabled}
       />
+      <UserContainer>
       {users.map(user => {
         return (
-          <div className="user" key={user.id}>
-            <h1>{user.username}</h1>
-            <p>{user.email}</p>
-            <p>{user.password}</p>
-            <p>{user.terms ? "Has agreed to the terms" : "Has not agreed to the terms"}</p>
-          </div>
+          <User key={user.id}>
+            <UserH>User: {user.username}</UserH>
+            <UserText>Email: {user.email}</UserText>
+            <UserText>Password: {user.password}</UserText>
+            <UserText>Term: {user.terms ? "Has agreed to the terms" : "Has not agreed to the terms"}</UserText>
+          </User>
         );
       })}
+      </UserContainer>
     </AppContainer>
   );
 }

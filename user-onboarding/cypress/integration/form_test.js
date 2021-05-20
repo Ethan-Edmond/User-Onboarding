@@ -21,4 +21,8 @@ describe("MVP tests", () => {
   it("Clicks the checkbox", () => {
     cy.get("input[name=terms]").click().should("be.checked");
   });
+  it("Submits the form", () => {
+    cy.contains("Submit").click();
+    cy.contains("User: Ethan").should("exist");
+  });
 });

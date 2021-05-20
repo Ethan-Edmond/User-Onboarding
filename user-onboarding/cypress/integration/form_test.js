@@ -58,3 +58,30 @@ describe("MVP tests", () => {
     });
   });
 });
+describe("Stretch form validation tests", () => {
+  it("password length test", () => {
+    password().type("asdf");
+    submit().should("be.disabled");
+    password().type("a");
+    submit().should("not.be.disabled");
+  });
+  it("password symbols test", () => {
+    password().type("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890-_,.+=!@#$%^&*()");
+    submit().should("not.be.disabled");
+    password().clear();
+    password().type("aaaaa ");
+    submit().should("be.disabled");
+    password().clear();
+    password().type("aaaaa`");
+    submit().should("be.disabled");
+  });
+  it("email validation test", () => {
+    cy.visit("");
+    username().type("a");
+    password().type("aaaaa");
+    email().type("a@a.");
+    submit().should("be.disabled");
+    email().type("a");
+    submit().should("not.be.disabled");
+  });
+});

@@ -18,4 +18,7 @@ describe("MVP tests", () => {
   it("Gets the password input, then types a password into it", () => {
     cy.get("input[name=password]").type("asdfjdlvklad").should("have.value", "asdfjdlvklad");
   });
+  it("Clicks the checkbox", () => {
+    cy.get("input[name=terms]").click().should("be.checked");
+  });
 });

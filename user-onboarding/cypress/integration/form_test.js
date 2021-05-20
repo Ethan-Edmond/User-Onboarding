@@ -9,4 +9,7 @@ describe("Cypress and url checking", () => {
 });
 
 describe("MVP tests", () => {
+  it("Gets the name input, then types a name into it", () => {
+    cy.get("input[name=username]").type("Ethan").should("have.value", "Ethan");
+  });
 });

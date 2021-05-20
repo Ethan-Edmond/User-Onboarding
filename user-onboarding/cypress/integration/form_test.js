@@ -51,5 +51,10 @@ describe("MVP tests", () => {
       username().type("dfjadsf");
       submit().should("be.disabled");
     });
+    it("password left empty", () => {
+      password().clear();
+      email().type("a@a.com");
+      submit().should("be.disabled");
+    });
   });
 });

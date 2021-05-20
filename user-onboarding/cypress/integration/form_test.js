@@ -15,5 +15,7 @@ describe("MVP tests", () => {
   it("Gets the email input, then types an email into it", () => {
     cy.get("input[name=email]").type("ethan@fakemail.com").should("have.value", "ethan@fakemail.com");
   });
-
+  it("Gets the password input, then types a password into it", () => {
+    cy.get("input[name=password]").type("asdfjdlvklad").should("have.value", "asdfjdlvklad");
+  });
 });
